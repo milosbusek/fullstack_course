@@ -1,2 +1,2 @@
-console.log("Aktuální datum: ")
-console.log(new Date().toLocaleTimeString());
+console.log("Aktuální datum:")
+console.log(new Date().toLocaleDateString());
