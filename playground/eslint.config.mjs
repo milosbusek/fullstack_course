@@ -9,7 +9,9 @@ export default defineConfig([
   tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
   { files: ["**/*.css"], plugins: { css }, language: "css/css", extends: ["css/recommended"] },
-]);npm install -D @stylistic/eslint-plugin
+]);npm i -D @stylistic/eslint-plugin
+
+
 
 
 
