@@ -1,0 +1,237 @@
+Index: playground/eslint.config.mjs
+===================================================================
+diff --git a/playground/eslint.config.mjs b/playground/eslint.config.mjs
+deleted file mode 100644
+--- a/playground/eslint.config.mjs	(revision 24ee1bf634fafac66baef1824cc78bdaa932a3f3)
++++ /dev/null	(revision 24ee1bf634fafac66baef1824cc78bdaa932a3f3)
+@@ -1,17 +0,0 @@
+-import js from "@eslint/js";
+-import globals from "globals";
+-import pluginReact from "@eslint/css";
+-
+-let css;
+-export default defineConfig([
+-  { files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"], plugins: { js }, extends: ["js/recommended"] },
+-  { files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"], languageOptions: { globals: {...globals.browser, ...globals.node} } },
+-  tseslint.configs.recommended,
+-  pluginReact.configs.flat.recommended,
+-  { files: ["**/*.css"], plugins: { css }, language: "css/css", extends: ["css/recommended"] },
+-]);npm i -D @stylistic/eslint-plugin
+-
+-
+-
+-
+-
+Index: playground/index.js
+===================================================================
+diff --git a/playground/index.js b/playground/index.js
+deleted file mode 100644
+--- a/playground/index.js	(revision 24ee1bf634fafac66baef1824cc78bdaa932a3f3)
++++ /dev/null	(revision 24ee1bf634fafac66baef1824cc78bdaa932a3f3)
+@@ -1,2 +0,0 @@
+-console.log("Aktuální datum:")
+-console.log(new Date().toLocaleDateString());
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"31fdd813-be95-48fb-ab11-b8e6bb3db5e0\" name=\"Changes\" comment=\"ukol 2\">\r\n      <change beforePath=\"$PROJECT_DIR$/playground/eslint.config.mjs\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/playground/index.js\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/playground/package.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/playground/package.json\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"settings.editor.selected.configurable\": \"vcs.Git\"\r\n  }\r\n}]]></component>\r\n  <component name=\"TaskManager\">\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"oprava úkol1\" />\r\n    <MESSAGE value=\"ukol 2\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"ukol 2\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 24ee1bf634fafac66baef1824cc78bdaa932a3f3)
++++ b/.idea/workspace.xml	(date 1753377318607)
+@@ -4,10 +4,12 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="31fdd813-be95-48fb-ab11-b8e6bb3db5e0" name="Changes" comment="ukol 2">
++    <list default="true" id="46624f8c-f1ce-4414-b403-03ed0bcab8e8" name="Changes" comment="Merge remote-tracking branch 'origin/main'">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/playground/eslint.config.mjs" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/playground/index.js" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/playground/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/playground/package.json" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/playground/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/playground/table.html" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -15,21 +17,150 @@
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
+   <component name="Git.Settings">
++    <option name="PREVIOUS_COMMIT_AUTHORS">
++      <list>
++        <option value="milosbusek &lt;milosbusek@gmail.com&gt;" />
++      </list>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "git-widget-placeholder": "main",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "settings.editor.selected.configurable": "vcs.Git"
++  <component name="GitHubPullRequestSearchHistory">{
++  &quot;lastFilter&quot;: {
++    &quot;state&quot;: &quot;OPEN&quot;,
++    &quot;assignee&quot;: &quot;milosbusek&quot;
++  }
++}</component>
++  <component name="GithubPullRequestsUISettings">{
++  &quot;selectedUrlAndAccountId&quot;: {
++    &quot;url&quot;: &quot;https://github.com/milosbusek/fullstack_course.git&quot;,
++    &quot;accountId&quot;: &quot;da9fb04d-a7e1-476c-b4ea-7b8c48325864&quot;
+   }
+-}]]></component>
++}</component>
++  <component name="ProblemsViewState">
++    <option name="selectedTabId" value="CurrentFile" />
++  </component>
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 7
++}</component>
++  <component name="ProjectId" id="30KJHQ5YjJsXray9154EXqm9YQc" />
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
++  </component>
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;JavaScript Debug.table.html.executor&quot;: &quot;Run&quot;,
++    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  }
++}</component>
++  <component name="SharedIndexes">
++    <attachedChunks>
++      <set>
++        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-WS-251.26927.40" />
++      </set>
++    </attachedChunks>
++  </component>
+   <component name="TaskManager">
++    <task active="true" id="Default" summary="Default task">
++      <changelist id="46624f8c-f1ce-4414-b403-03ed0bcab8e8" name="Changes" comment="" />
++      <created>1753370244927</created>
++      <option name="number" value="Default" />
++      <option name="presentableId" value="Default" />
++      <updated>1753370244927</updated>
++      <workItem from="1753370246990" duration="7019000" />
++    </task>
++    <task id="LOCAL-00001" summary="Merge remote-tracking branch 'origin/main'">
++      <option name="closed" value="true" />
++      <created>1753376483745</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1753376483745</updated>
++    </task>
++    <task id="LOCAL-00002" summary="Merge remote-tracking branch 'origin/main'">
++      <option name="closed" value="true" />
++      <created>1753377203787</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1753377203787</updated>
++    </task>
++    <task id="LOCAL-00003" summary="Merge remote-tracking branch 'origin/main'">
++      <option name="closed" value="true" />
++      <created>1753377268240</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1753377268240</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
++  <component name="TypeScriptGeneratedFilesManager">
++    <option name="version" value="3" />
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="RECENT_FILTERS">
++      <map>
++        <entry key="Branch">
++          <value>
++            <list>
++              <RecentGroup>
++                <option name="FILTER_VALUES">
++                  <option value="main" />
++                </option>
++              </RecentGroup>
++            </list>
++          </value>
++        </entry>
++      </map>
++    </option>
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State>
++              <option name="FILTERS">
++                <map>
++                  <entry key="branch">
++                    <value>
++                      <list>
++                        <option value="main" />
++                      </list>
++                    </value>
++                  </entry>
++                  <entry key="date">
++                    <value>
++                      <list>
++                        <option value="1753290606691" />
++                        <option value="" />
++                      </list>
++                    </value>
++                  </entry>
++                </map>
++              </option>
++            </State>
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
+   <component name="VcsManagerConfiguration">
+-    <MESSAGE value="oprava úkol1" />
+-    <MESSAGE value="ukol 2" />
+-    <option name="LAST_COMMIT_MESSAGE" value="ukol 2" />
++    <MESSAGE value="add type=&quot;email&quot;" />
++    <MESSAGE value="add &lt;input id=&quot;email&quot; type=&quot;email&quot;/&gt;&lt;br&gt;" />
++    <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
++    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'" />
++    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: playground/package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n  \"name\": \"fullstack_course\",\r\n  \"version\": \"0.0.1\",\r\n  \"description\": \"test 1\",\r\n  \"main\": \"../index.js\",\r\n  \"scripts\": {\r\n    \"test\": \"echo \\\"ahoj\\\"\",\r\n    \"lint\": \"eslint\",\r\n    \"lint:fix\" : \"eslint --fix\"\r\n  },\r\n  \"repository\": {\r\n    \"type\": \"git\",\r\n    \"url\": \"git+https://github.com/milosbusek/fullstack_course.git\"\r\n  },\r\n  \"keywords\": [\r\n    \"demo_ukol1\"\r\n  ],\r\n  \"author\": \"milosbusek\",\r\n  \"license\": \"ISC\",\r\n  \"bugs\": {\r\n    \"url\": \"https://github.com/milosbusek/fullstack_course/issues\"\r\n  },\r\n  \"homepage\": \"https://github.com/milosbusek/fullstack_course#readme\",\r\n  \"devDependencies\": {\r\n    \"@eslint/css\": \"^0.10.0\",\r\n    \"@eslint/js\": \"^9.31.0\",\r\n    \"eslint\": \"^9.31.0\",\r\n    \"eslint-plugin-react\": \"^7.37.5\",\r\n    \"globals\": \"^16.3.0\",\r\n    \"typescript-eslint\": \"^8.36.0\"\r\n  }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/playground/package.json b/playground/package.json
+--- a/playground/package.json	(revision 24ee1bf634fafac66baef1824cc78bdaa932a3f3)
++++ b/playground/package.json	(date 1753377284398)
+@@ -2,7 +2,7 @@
+   "name": "fullstack_course",
+   "version": "0.0.1",
+   "description": "test 1",
+-  "main": "../index.js",
++  "main": "index.js",
+   "scripts": {
+     "test": "echo \"ahoj\"",
+     "lint": "eslint",
