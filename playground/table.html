@@ -6,10 +6,12 @@
        <meta name="keywords" content="full stack, JS, HTML">
        <meta name="author" content="milosbusek">
        <meta name="robots" content="noindex, nofollow">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <table id="data">
-       <caption><b>Tabulka</b></caption>
+       <caption>Tabulka</caption>
        <thead>
               <tr>
                      <th colspan="4">Hlavička</th>
@@ -30,16 +32,30 @@
        </tfoot>
 </table>
 <br>
-
+</div>
 <form id="mujformular">
-       <label for="first_name">jméno</label><br>
-       <input id="first_name" type="text"><br>
-       <label for="last_name">příjmení</label><br>
-       <input id="last_name" type="text"><br>
-       <label for="email">email</label><br>
-       <input id="email" type="text"><br>
-       <label for="phone">telefon</label><br>
-       <input id="phone" type="text"><br>
+       <div class="row">
+              <div class="column">
+                     <label for="first_name">jméno</label><br>
+                     <input id="first_name" type="text"><br>
+              </div>
+              <div class="column">
+                     <label for="last_name">příjmení</label><br>
+                     <input id="last_name" type="text"><br>
+              </div>
+              <div class="column">
+                     <label for="email">email</label><br>
+                     <input id="email" type="email"><br>
+              </div>
+              <div class="column">
+                     <label for="phone">telefon</label><br>
+                     <input id="phone" type="text"><br>
+              </div>
+              <div class="column">
+                     <br>
+                     <button onclick="addRow()" type="button">Přidej řádek</button>
+              </div>
+       </div>
 
 <script>
        var addRow = () => {
@@ -54,8 +70,6 @@
               });
        };
 </script>
-       <br>
-       <button onclick="addRow()" type="button">Přidej řádek</button>
 </form>
 </body>
 </html>
