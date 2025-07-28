@@ -1,0 +1,60 @@
+thead,
+tfoot,th {
+    border: 2px solid #8A8A8A;   /* color border */
+    font-weight: bold;
+    color: #000000;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #55ccff;   /* background color even */
+    color: #31279f;
+}
+tbody tr:nth-child(odd) {
+    background-color: #f8d607;  /* background color odd */
+    color: #000000;
+}
+tbody tr:hover {
+    background-color: #48ff00;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.column {
+    float: left;
+    padding: 20px;
+    width: auto;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width=400px) and (orientation: portrait)/* width mobil */
+{
+    font-size: 20pt;
+    .column {
+        width: auto;
+    }
+}
+
+@media screen and (min-width=401) and (max-width=767px) and (orientation: portrait) /* width tablet */
+
+{
+    font-size: 30pt;
+    .column {
+        width: auto;
+    }
+}
+
+@media screen and (min-width=768px) and (orientation: landscape) /* width full screen */
+{
+    font-size: 40pt;
+    .column {
+        width: auto;
+    }
+}
