@@ -34,26 +34,32 @@ tbody tr:hover {
     clear: both;
 }
 
-@media screen and (max-width=400px) and (orientation: portrait)/* width mobil */
+@media screen and (max-width:400px) and (orientation: portrait)/* width mobil */
 {
-    font-size: 20pt;
+    html{
+        font-size: 20pt;
+    }
     .column {
         width: auto;
     }
 }
 
-@media screen and (min-width=401) and (max-width=767px) and (orientation: portrait) /* width tablet */
+@media screen and (min-width:401) and (max-width:767px) and (orientation: portrait) /* width tablet */
 
 {
+html{
     font-size: 30pt;
+}
     .column {
         width: auto;
     }
 }
 
-@media screen and (min-width=768px) and (orientation: landscape) /* width full screen */
+@media screen and (min-width:768px) and (orientation: landscape) /* width full screen */
 {
-    font-size: 40pt;
+    html{
+        font-size: 40pt;
+    }
     .column {
         width: auto;
     }

@@ -11,8 +11,8 @@
 </head>
 <body>
 <table id="data">
-       <caption>Tabulka</caption>
        <thead>
+       <caption>Tabulka</caption>
               <tr>
                      <th colspan="4">Hlavička</th>
               </tr>
@@ -32,7 +32,7 @@
        </tfoot>
 </table>
 <br>
-</div>
+
 <form id="mujformular">
        <div class="row">
               <div class="column">
@@ -58,7 +58,7 @@
        </div>
 
 <script>
-       var addRow = () => {
+      const addRow = () => {
               const table = document.getElementById("data").querySelector("tbody");
               const newRow = table.insertRow(-1);
 
