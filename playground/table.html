@@ -13,22 +13,22 @@
 <table id="data">
        <thead>
        <caption>Tabulka</caption>
-              <tr>
-                     <th colspan="4">Hlavička</th>
-              </tr>
+       <tr>
+              <th colspan="4">Hlavička</th>
+       </tr>
        </thead>
        <tbody>
-              <tr>
-                     <td>Jméno</td>
-                     <td>Příjmení</td>
-                     <td>e-mail</td>
-                     <td>telefon</td>
-              </tr>
+       <tr>
+              <td>Jméno</td>
+              <td>Příjmení</td>
+              <td>e-mail</td>
+              <td>telefon</td>
+       </tr>
        </tbody>
        <tfoot>
-              <tr>
-                     <th colspan="4">Zápatí</th>
-                                  </tr>
+       <tr>
+              <th colspan="4">Zápatí</th>
+       </tr>
        </tfoot>
 </table>
 <br>
@@ -57,19 +57,19 @@
               </div>
        </div>
 
-<script>
-      const addRow = () => {
-              const table = document.getElementById("data").querySelector("tbody");
-              const newRow = table.insertRow(-1);
+       <script>
+              const addRow = () => {
+                     const table = document.getElementById("data").querySelector("tbody");
+                     const newRow = table.insertRow(-1);
 
-              ["phone", "email", "last_name", "first_name"].forEach((fieldName) => {
-                     const newValue = document.getElementById(fieldName).value;
-                     const newCell = newRow.insertCell(0);
-                     let newText = document.createTextNode(newValue);
-                     newCell.appendChild(newText);
-              });
-       };
-</script>
+                     ["phone", "email", "last_name", "first_name"].forEach((fieldName) => {
+                            const newValue = document.getElementById(fieldName).value;
+                            const newCell = newRow.insertCell(0);
+                            let newText = document.createTextNode(newValue);
+                            newCell.appendChild(newText);
+                     });
+              };
+       </script>
 </form>
 </body>
 </html>
