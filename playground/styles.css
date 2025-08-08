@@ -1,0 +1,85 @@
+/* Obecné nastavení pro tělo stránky */
+/*body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+    text-align: center;
+}
+*/
+thead,
+tfoot,th {
+    border: 2px solid #8A8A8A;   /* color border */
+    font-weight: bold;
+    color: #000000;
+    background-color: #ffffff;
+    padding: 8px 12px;
+    text-align: center;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #80c4ec;   /* background color even */
+    color: #000000;
+}
+tbody tr:nth-child(odd) {
+    background-color: #fff5ce;  /* background color odd */
+    color: #000000;
+}
+tbody tr:hover {
+    background-color: #f4dbdb;
+}
+
+
+/* Styl pro tabulku */
+table#data {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+table#data caption {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+
+/* Styl pro formulář */
+form#mujformular .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+form#mujformular .column {
+    flex: 1 1 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+form#mujformular label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+form#mujformular input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form#mujformular button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 22px;
+}
+
+form#mujformular button:hover {
+    background-color: #218838;
+}
