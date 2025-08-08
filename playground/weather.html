@@ -1,0 +1,73 @@
+<!-- playground/weather.html -->
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Předpověď počasí</title>
+</head>
+<body>
+<h1>Předpověď počasí</h1>
+
+<form id="weather-form">
+    <label for="cities">Zadej až 3 města (oddělená čárkou nebo středníkem):</label><br>
+    <input type="text" id="cities" name="cities" required>
+    <button type="submit">Zobraz předpověď</button>
+</form>
+
+<div id="results"></div>
+
+<script>
+    const form = document.getElementById('weather-form');
+    const resultsDiv = document.getElementById('results');
+
+    async function fetchWeather(city) {
+        try {
+            const geoRes = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&language=cs&format=json`);
+            const geoData = await geoRes.json();
+            if (!geoData.results || geoData.results.length === 0) {
+                throw new Error(`Město "${city}" nebylo nalezeno.`);
+            }
+
+            const { latitude, longitude } = geoData.results[0];
+            const weatherRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=temperature_2m_max,temperature_2m_min&timezone=auto`);
+            const weatherData = await weatherRes.json();
+
+            if (!weatherData.daily || !weatherData.daily.temperature_2m_max) {
+                throw new Error(`Nepodařilo se načíst počasí pro "${city}".`);
+            }
+
+            const min = weatherData.daily.temperature_2m_min[0];
+            const max = weatherData.daily.temperature_2m_max[0];
+
+            return { city, min, max };
+        } catch (error) {
+            return { city, error: error.message };
+        }
+    }
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        resultsDiv.innerHTML = '';
+
+        const input = document.getElementById('cities').value.trim();
+        if (!input) return;
+
+        const cities = input.split(/[,;]+/).map(c => c.trim()).filter(c => c).slice(0, 3);
+        if (cities.length === 0) return;
+
+        const promises = cities.map(fetchWeather);
+        const results = await Promise.all(promises);
+
+        results.forEach(({ city, min, max, error }) => {
+            const p = document.createElement('p');
+            if (error) {
+                p.textContent = `❌ ${city}: ${error}`;
+            } else {
+                p.textContent = `✅ ${city}: Min: ${min}°C, Max: ${max}°C`;
+            }
+            resultsDiv.appendChild(p);
+        });
+    });
+</script>
+</body>
+</html>
