@@ -1,6 +1,6 @@
 
 import { render, screen } from "@testing-library/react";
-import { Event, DateRecord } from "./Event";
+import { Event, type DateRecord } from "./Event";
 
 describe("Event component", () => {
     const mockDates: DateRecord[] = [
