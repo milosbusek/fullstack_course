@@ -1,27 +1,68 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { data } from "../data/mockData";
-import { type PollingEvent } from "../types";
+
+const MAX_DATES = 10;
 
 const NewEvent: React.FC = () => {
     const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [location, setLocation] = useState("");
+    const [dates, setDates] = useState<string[]>([""]);
+    const [error, setError] = useState<string | null>(null);
+    const [submitting, setSubmitting] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    function addDate() {
+        if (dates.length >= MAX_DATES) return;
+        setDates((d) => [...d, ""]);
+    }
+
+    function removeDate(i: number) {
+        setDates((d) => d.filter((_, idx) => idx !== i));
+    }
+
+    function changeDate(i: number, value: string) {
+        setDates((d) => d.map((v, idx) => (idx === i ? value : v)));
+    }
+
+    async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        if (!title || !location) return;
+        setError(null);
+        if (!title.trim()) return;
 
-        const newEvent: PollingEvent = {
-            id: String(Date.now()),
-            title,
-            location,
-            dates: [],
-        };
+        const ts = dates
+            .map((v) => v && Date.parse(v))
+            .filter((n): n is number => Number.isFinite(n));
 
-        data.push(newEvent);
-        navigate(`/events/${newEvent.id}`);
-    };
+        setSubmitting(true);
+        try {
+            const r = await fetch("/api/events", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: title,
+                    location: location || undefined,
+                    title,
+                    dates: ts,
+                }),
+            });
+
+            if (!r.ok) {
+                setError("Odeslání selhalo, server není dostupný");
+                return;
+            }
+
+            const created = await r.json().catch(() => null);
+            const newId =
+                created?.id ??
+                String(Date.now());
+
+            navigate(`/events/${newId}`);
+        } catch {
+            setError("Odeslání selhalo, server není dostupný");
+        } finally {
+            setSubmitting(false);
+        }
+    }
 
     return (
         <form onSubmit={handleSubmit}>
@@ -35,6 +76,7 @@ const NewEvent: React.FC = () => {
                     />
                 </label>
             </div>
+
             <div>
                 <label>
                     Místo:
@@ -45,7 +87,36 @@ const NewEvent: React.FC = () => {
                     />
                 </label>
             </div>
-            <button type="submit">Přidat událost</button>
+
+            <div style={{ marginTop: 8, marginBottom: 8 }}>
+                {dates.map((v, i) => (
+                    <div key={i} style={{ display: "flex", gap: 8, marginBottom: 6 }}>
+                        <input
+                            type="datetime-local"
+                            value={v}
+                            onChange={(e) => changeDate(i, e.target.value)}
+                        />
+                        <button type="button" onClick={() => removeDate(i)}>
+                            Odebrat
+                        </button>
+                    </div>
+                ))}
+                <button
+                    type="button"
+                    onClick={addDate}
+                    disabled={dates.length >= MAX_DATES}
+                >
+                    Přidat datum
+                </button>
+            </div>
+
+            <button type="submit" disabled={submitting}>
+                Přidat událost
+            </button>
+
+            {error && (
+                <p style={{ color: "crimson", marginTop: 8 }}>{error}</p>
+            )}
         </form>
     );
 };
