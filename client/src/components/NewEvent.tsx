@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const MAX_DATES = 10;
+const API = "http://localhost:4000";
 
 const NewEvent: React.FC = () => {
     const navigate = useNavigate();
@@ -9,63 +9,47 @@ const NewEvent: React.FC = () => {
     const [location, setLocation] = useState("");
     const [dates, setDates] = useState<string[]>([""]);
     const [error, setError] = useState<string | null>(null);
-    const [submitting, setSubmitting] = useState(false);
 
+    function setDateAt(i: number, v: string) {
+        setDates((prev) => prev.map((x, idx) => (idx === i ? v : x)));
+    }
     function addDate() {
-        if (dates.length >= MAX_DATES) return;
-        setDates((d) => [...d, ""]);
+        if (dates.length < 10) setDates((p) => [...p, ""]);
     }
-
     function removeDate(i: number) {
-        setDates((d) => d.filter((_, idx) => idx !== i));
+        setDates((p) => p.filter((_, idx) => idx !== i));
     }
 
-    function changeDate(i: number, value: string) {
-        setDates((d) => d.map((v, idx) => (idx === i ? value : v)));
-    }
-
-    async function handleSubmit(e: React.FormEvent) {
+    async function onSubmit(e: React.FormEvent) {
         e.preventDefault();
         setError(null);
         if (!title.trim()) return;
 
-        const ts = dates
-            .map((v) => v && Date.parse(v))
-            .filter((n): n is number => Number.isFinite(n));
+        const parsed = dates
+            .map((v) => v && !Number.isNaN(Date.parse(v)) ? Date.parse(v) : null)
+            .filter((x): x is number => x !== null);
 
-        setSubmitting(true);
         try {
-            const r = await fetch("/api/events", {
+            const r = await fetch(`${API}/api/events`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    name: title,
-                    location: location || undefined,
                     title,
-                    dates: ts,
-                }),
+                    location: location || undefined,
+                    dates: parsed
+                })
             });
-
             if (!r.ok) {
-                setError("Odeslání selhalo, server není dostupný");
-                return;
+                throw new Error("Bad Request");
             }
-
-            const created = await r.json().catch(() => null);
-            const newId =
-                created?.id ??
-                String(Date.now());
-
-            navigate(`/events/${newId}`);
+            navigate("/events");
         } catch {
             setError("Odeslání selhalo, server není dostupný");
-        } finally {
-            setSubmitting(false);
         }
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
             <div>
                 <label>
                     Název události:
@@ -76,7 +60,6 @@ const NewEvent: React.FC = () => {
                     />
                 </label>
             </div>
-
             <div>
                 <label>
                     Místo:
@@ -88,37 +71,28 @@ const NewEvent: React.FC = () => {
                 </label>
             </div>
 
-            <div style={{ marginTop: 8, marginBottom: 8 }}>
-                {dates.map((v, i) => (
-                    <div key={i} style={{ display: "flex", gap: 8, marginBottom: 6 }}>
-                        <input
-                            type="datetime-local"
-                            value={v}
-                            onChange={(e) => changeDate(i, e.target.value)}
-                        />
-                        <button type="button" onClick={() => removeDate(i)}>
-                            Odebrat
-                        </button>
-                    </div>
-                ))}
-                <button
-                    type="button"
-                    onClick={addDate}
-                    disabled={dates.length >= MAX_DATES}
-                >
-                    Přidat datum
-                </button>
-            </div>
-
-            <button type="submit" disabled={submitting}>
-                Přidat událost
+            {dates.map((v, i) => (
+                <div key={i}>
+                    <input
+                        type="datetime-local"
+                        value={v}
+                        onChange={(e) => setDateAt(i, e.target.value)}
+                    />
+                    <button type="button" onClick={() => removeDate(i)}>Odebrat</button>
+                </div>
+            ))}
+            <button type="button" onClick={addDate} disabled={dates.length >= 10}>
+                Přidat datum
             </button>
 
-            {error && (
-                <p style={{ color: "crimson", marginTop: 8 }}>{error}</p>
-            )}
+            <div style={{ marginTop: 12 }}>
+                <button type="submit">Přidat událost</button>
+            </div>
+
+            {error && <p style={{ color: "crimson" }}>{error}</p>}
         </form>
     );
 };
 
 export default NewEvent;
+
