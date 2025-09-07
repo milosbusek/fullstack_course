@@ -4,14 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31fdd813-be95-48fb-ab11-b8e6bb3db5e0" name="Changes" comment="ukol 2">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playground/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/playground/styles.css" afterDir="false" />
+    <list default="true" id="31fdd813-be95-48fb-ab11-b8e6bb3db5e0" name="Changes" comment="git status">
+      <change afterPath="$PROJECT_DIR$/server/src/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/EventDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/EventDetail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/EventsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/EventsList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/NewEvent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/NewEvent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -29,7 +42,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -45,9 +58,17 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "#2 on Merging local",
+    "Vitest.All Tests.executor": "Run",
+    "Vitest.Event component.executor": "Run",
+    "Vitest.Event component.handles empty dates.executor": "Run",
+    "Vitest.Event component.renders table with participants and votes.executor": "Run",
+    "Vitest.NewEvent component.executor": "Run",
+    "Vitest.NewEvent component.should add a new event on form submit.executor": "Run",
+    "Vitest.zobrazí položky a odkazy.executor": "Run",
+    "git-widget-placeholder": "feat/server-api",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "C:/Users/milos/WebstormProjects/fullstack_course/client/src/components",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -56,9 +77,11 @@
     "npm.build:cts.executor": "Run",
     "npm.build:dedupe-types.executor": "Run",
     "npm.build:std__path.executor": "Run",
+    "npm.dev.executor": "Run",
     "npm.lint.executor": "Run",
     "npm.lint:fix.executor": "Run",
     "npm.pretest.executor": "Run",
+    "npm.preview.executor": "Run",
     "npm.test (1).executor": "Run",
     "npm.test.executor": "Run",
     "npm.test:coverage.executor": "Run",
@@ -66,55 +89,73 @@
     "settings.editor.selected.configurable": "ml.llm.LLMConfigurable",
     "settings.editor.splitter.proportion": "0.5995551",
     "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "C:\\Users\\milos\\WebstormProjects\\fullstack_course\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="npm.lint:fix">
-    <configuration name="build:dedupe-types" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/node_modules/@eslint/config-array/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="build:dedupe-types" />
-      </scripts>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\milos\WebstormProjects\fullstack_course\client\src\components" />
+      <recent name="C:\Users\milos\WebstormProjects\fullstack_course\server" />
+      <recent name="C:\Users\milos\WebstormProjects\fullstack_course\server\src" />
+      <recent name="C:\Users\milos\WebstormProjects\fullstack_course\client\src\hooks" />
+      <recent name="C:\Users\milos\WebstormProjects\fullstack_course\client\src\utils" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Vitest.NewEvent component.should add a new event on form submit">
+    <configuration name="All Tests" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
+      <vitest-package value="$PROJECT_DIR$/client/node_modules/vitest" />
+      <working-dir value="$PROJECT_DIR$/client" />
       <envs />
+      <scope-kind value="ALL" />
       <method v="2" />
     </configuration>
-    <configuration name="lint" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/playground/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="lint" />
-      </scripts>
+    <configuration name="NewEvent component" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
+      <vitest-package value="$PROJECT_DIR$/client/node_modules/vitest" />
+      <working-dir value="$PROJECT_DIR$/client" />
+      <vitest-options value="--run" />
       <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/client/src/components/NewEvent.test.tsx" />
+      <test-names>
+        <test-name value="NewEvent component" />
+      </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="lint:fix" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/playground/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="lint:fix" />
-      </scripts>
+    <configuration name="NewEvent component.should add a new event on form submit" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
+      <vitest-package value="$PROJECT_DIR$/client/node_modules/vitest" />
+      <working-dir value="$PROJECT_DIR$/client" />
+      <vitest-options value="--run" />
       <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/client/src/components/NewEvent.test.tsx" />
+      <test-names>
+        <test-name value="NewEvent component" />
+        <test-name value="should add a new event on form submit" />
+      </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="test (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/playground/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="test" />
-      </scripts>
+    <configuration name="zobrazí položky a odkazy" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
+      <vitest-package value="$PROJECT_DIR$/client/node_modules/vitest" />
+      <working-dir value="$PROJECT_DIR$/client" />
+      <vitest-options value="--run" />
       <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/client/src/components/EventsList.test.tsx" />
+      <test-names>
+        <test-name value="zobrazí položky a odkazy" />
+      </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="test:jsr" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/node_modules/@eslint/config-array/package.json" />
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/client/package.json" />
       <command value="run" />
       <scripts>
-        <script value="test:jsr" />
+        <script value="dev" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -122,11 +163,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.lint:fix" />
-        <item itemvalue="npm.lint" />
-        <item itemvalue="npm.test (1)" />
-        <item itemvalue="npm.test:jsr" />
-        <item itemvalue="npm.build:dedupe-types" />
+        <item itemvalue="Vitest.NewEvent component.should add a new event on form submit" />
+        <item itemvalue="Vitest.NewEvent component" />
+        <item itemvalue="Vitest.All Tests" />
+        <item itemvalue="Vitest.zobrazí položky a odkazy" />
+        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
@@ -151,6 +192,16 @@
       <workItem from="1753971288338" duration="34000" />
       <workItem from="1753971369206" duration="3841000" />
       <workItem from="1754325772286" duration="1861000" />
+      <workItem from="1754674354302" duration="1272000" />
+      <workItem from="1756133452420" duration="13068000" />
+      <workItem from="1756284696147" duration="405000" />
+      <workItem from="1756285118391" duration="1526000" />
+      <workItem from="1756286666027" duration="7442000" />
+      <workItem from="1756633680310" duration="8611000" />
+      <workItem from="1756642455277" duration="17776000" />
+      <workItem from="1756660749631" duration="2969000" />
+      <workItem from="1756732926943" duration="11802000" />
+      <workItem from="1756829480543" duration="11054000" />
     </task>
     <task id="LOCAL-00001" summary="ukol 2">
       <option name="closed" value="true" />
@@ -168,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753711153116</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="ukol 2">
+      <option name="closed" value="true" />
+      <created>1754658733416</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1754658733416</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

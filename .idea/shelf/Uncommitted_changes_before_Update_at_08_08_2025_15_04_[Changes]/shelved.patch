@@ -1,0 +1,186 @@
+Index: playground/styles.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/* Obecné nastavení pro tělo stránky */\r\n/*body {\r\n    font-family: Arial, sans-serif;\r\n    margin: 20px;\r\n    background-color: #f9f9f9;\r\n    color: #333;\r\n    text-align: center;\r\n}\r\n*/\r\nthead,\r\ntfoot,th {\r\n    border: 2px solid #8A8A8A;   /* color border */\r\n    font-weight: bold;\r\n    color: #000000;\r\n    background-color: #ffffff;\r\n    padding: 8px 12px;\r\n    text-align: center;\r\n}\r\n\r\ntbody tr:nth-child(even) {\r\n    background-color: #80c4ec;   /* background color even */\r\n    color: #000000;\r\n}\r\ntbody tr:nth-child(odd) {\r\n    background-color: #fff5ce;  /* background color odd */\r\n    color: #000000;\r\n}\r\ntbody tr:hover {\r\n    background-color: #f4dbdb;\r\n}\r\n\r\n\r\n/* Styl pro tabulku */\r\ntable#data {\r\n    border-collapse: collapse;\r\n    width: 100%;\r\n    margin-bottom: 20px;\r\n    font-size: 1.2em;\r\n}\r\n\r\ntable#data caption {\r\n    font-weight: bold;\r\n    font-size: 1.2em;\r\n    margin: 10px 0;\r\n}\r\n\r\n\r\n/* Styl pro formulář */\r\nform#mujformular .row {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    gap: 20px;\r\n}\r\n\r\nform#mujformular .column {\r\n    flex: 1 1 200px;\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\nform#mujformular label {\r\n    font-weight: bold;\r\n    margin-bottom: 5px;\r\n}\r\n\r\nform#mujformular input {\r\n    padding: 8px;\r\n    border: 1px solid #ccc;\r\n    border-radius: 4px;\r\n}\r\n\r\nform#mujformular button {\r\n    padding: 10px 15px;\r\n    background-color: #28a745;\r\n    border: none;\r\n    color: white;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n    font-weight: bold;\r\n    margin-top: 22px;\r\n}\r\n\r\nform#mujformular button:hover {\r\n    background-color: #218838;\r\n}}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/playground/styles.css b/playground/styles.css
+--- a/playground/styles.css	(revision 6c7703d6fa40b09d2d8a9d9e6998c8b4fd88d5e8)
++++ b/playground/styles.css	(date 1754658195017)
+@@ -82,4 +82,4 @@
+ 
+ form#mujformular button:hover {
+     background-color: #218838;
+-}}
+\ No newline at end of file
++}
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"31fdd813-be95-48fb-ab11-b8e6bb3db5e0\" name=\"Changes\" comment=\"ukol 2\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_07_2025_19_14_[Changes]/shelved.patch\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_07_2025_19_14__Changes_.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_07_2025_19_39_[Changes]/shelved.patch\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_07_2025_19_39__Changes_.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;milosbusek&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/milosbusek/fullstack_course.git&quot;,\r\n    &quot;accountId&quot;: &quot;da9fb04d-a7e1-476c-b4ea-7b8c48325864&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"30PuoBNTSRYnY1PmzJmbBTWaoxy\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;JavaScript Debug.table.html.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;#2 on local&quot;,\r\n    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,\r\n    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;npm.build.executor&quot;: &quot;Run&quot;,\r\n    &quot;npm.build:cts.executor&quot;: &quot;Run&quot;,\r\n    &quot;npm.build:dedupe-types.executor&quot;: &quot;Run&quot;,\r\n    &quot;npm.build:std__path.executor&quot;: &quot;Run&quot;,\r\n    &quot;npm.lint.executor&quot;: &quot;Run&quot;,\r\n    &quot;npm.lint:fix.executor&quot;: &quot;Run&quot;,\r\n    &quot;npm.pretest.executor&quot;: &quot;Run&quot;,\r\n    &quot;npm.test (1).executor&quot;: &quot;Run&quot;,\r\n    &quot;npm.test.executor&quot;: &quot;Run&quot;,\r\n    &quot;npm.test:coverage.executor&quot;: &quot;Run&quot;,\r\n    &quot;npm.test:jsr.executor&quot;: &quot;Run&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,\r\n    &quot;settings.editor.splitter.proportion&quot;: &quot;0.5995551&quot;,\r\n    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\" selected=\"npm.lint:fix\">\r\n    <configuration name=\"build:dedupe-types\" type=\"js.build_tools.npm\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <package-json value=\"$PROJECT_DIR$/node_modules/@eslint/config-array/package.json\" />\r\n      <command value=\"run\" />\r\n      <scripts>\r\n        <script value=\"build:dedupe-types\" />\r\n      </scripts>\r\n      <node-interpreter value=\"project\" />\r\n      <envs />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"lint\" type=\"js.build_tools.npm\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <package-json value=\"$PROJECT_DIR$/playground/package.json\" />\r\n      <command value=\"run\" />\r\n      <scripts>\r\n        <script value=\"lint\" />\r\n      </scripts>\r\n      <node-interpreter value=\"project\" />\r\n      <envs />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"lint:fix\" type=\"js.build_tools.npm\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <package-json value=\"$PROJECT_DIR$/playground/package.json\" />\r\n      <command value=\"run\" />\r\n      <scripts>\r\n        <script value=\"lint:fix\" />\r\n      </scripts>\r\n      <node-interpreter value=\"project\" />\r\n      <envs />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"test (1)\" type=\"js.build_tools.npm\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <package-json value=\"$PROJECT_DIR$/playground/package.json\" />\r\n      <command value=\"run\" />\r\n      <scripts>\r\n        <script value=\"test\" />\r\n      </scripts>\r\n      <node-interpreter value=\"project\" />\r\n      <envs />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"test:jsr\" type=\"js.build_tools.npm\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <package-json value=\"$PROJECT_DIR$/node_modules/@eslint/config-array/package.json\" />\r\n      <command value=\"run\" />\r\n      <scripts>\r\n        <script value=\"test:jsr\" />\r\n      </scripts>\r\n      <node-interpreter value=\"project\" />\r\n      <envs />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"npm.lint:fix\" />\r\n        <item itemvalue=\"npm.lint\" />\r\n        <item itemvalue=\"npm.test (1)\" />\r\n        <item itemvalue=\"npm.test:jsr\" />\r\n        <item itemvalue=\"npm.build:dedupe-types\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-WS-251.27812.50\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"31fdd813-be95-48fb-ab11-b8e6bb3db5e0\" name=\"Changes\" comment=\"ukol 2\" />\r\n      <created>1753541703467</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1753541703467</updated>\r\n      <workItem from=\"1753541705781\" duration=\"7622000\" />\r\n      <workItem from=\"1753624033103\" duration=\"19487000\" />\r\n      <workItem from=\"1753703564191\" duration=\"7827000\" />\r\n      <workItem from=\"1753905597356\" duration=\"1938000\" />\r\n      <workItem from=\"1753971288338\" duration=\"34000\" />\r\n      <workItem from=\"1753971369206\" duration=\"3841000\" />\r\n      <workItem from=\"1754325772286\" duration=\"1861000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"ukol 2\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1753711141706</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1753711141706</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"ukol 2\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1753711153116</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1753711153116</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"RECENT_FILTERS\">\r\n      <map>\r\n        <entry key=\"Branch\">\r\n          <value>\r\n            <list>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"HEAD\" />\r\n                </option>\r\n              </RecentGroup>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"main\" />\r\n                </option>\r\n              </RecentGroup>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"origin/main\" />\r\n                </option>\r\n              </RecentGroup>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"local\" />\r\n                </option>\r\n              </RecentGroup>\r\n            </list>\r\n          </value>\r\n        </entry>\r\n        <entry key=\"User\">\r\n          <value>\r\n            <list>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"*\" />\r\n                </option>\r\n              </RecentGroup>\r\n            </list>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"HEAD\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                  <entry key=\"user\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"*\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"oprava úkol1\" />\r\n    <MESSAGE value=\"ukol 2\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"ukol 2\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 6c7703d6fa40b09d2d8a9d9e6998c8b4fd88d5e8)
++++ b/.idea/workspace.xml	(date 1754658097354)
+@@ -5,26 +5,43 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="31fdd813-be95-48fb-ab11-b8e6bb3db5e0" name="Changes" comment="ukol 2">
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_07_2025_19_14_[Changes]/shelved.patch" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_07_2025_19_14__Changes_.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_07_2025_19_39_[Changes]/shelved.patch" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_07_2025_19_39__Changes_.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="HTML File" />
++      </list>
++    </option>
++  </component>
++  <component name="Git.Merge.Settings">
++    <option name="BRANCH" value="main" />
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+-  <component name="GitHubPullRequestSearchHistory">{
+-  &quot;lastFilter&quot;: {
+-    &quot;state&quot;: &quot;OPEN&quot;,
+-    &quot;assignee&quot;: &quot;milosbusek&quot;
++  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
++  "history": [
++    {
++      "state": "OPEN",
++      "assignee": "ladariha",
++      "author": "milosbusek",
++      "label": "documentation"
++    }
++  ],
++  "lastFilter": {
++    "state": "OPEN",
++    "assignee": "ladariha",
++    "author": "milosbusek",
++    "label": "documentation"
+   }
+-}</component>
++}]]></component>
+   <component name="GithubPullRequestsUISettings">{
+   &quot;selectedUrlAndAccountId&quot;: {
+     &quot;url&quot;: &quot;https://github.com/milosbusek/fullstack_course.git&quot;,
+@@ -42,36 +59,37 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;JavaScript Debug.table.html.executor&quot;: &quot;Run&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;#2 on local&quot;,
+-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+-    &quot;npm.build:cts.executor&quot;: &quot;Run&quot;,
+-    &quot;npm.build:dedupe-types.executor&quot;: &quot;Run&quot;,
+-    &quot;npm.build:std__path.executor&quot;: &quot;Run&quot;,
+-    &quot;npm.lint.executor&quot;: &quot;Run&quot;,
+-    &quot;npm.lint:fix.executor&quot;: &quot;Run&quot;,
+-    &quot;npm.pretest.executor&quot;: &quot;Run&quot;,
+-    &quot;npm.test (1).executor&quot;: &quot;Run&quot;,
+-    &quot;npm.test.executor&quot;: &quot;Run&quot;,
+-    &quot;npm.test:coverage.executor&quot;: &quot;Run&quot;,
+-    &quot;npm.test:jsr.executor&quot;: &quot;Run&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
+-    &quot;settings.editor.splitter.proportion&quot;: &quot;0.5995551&quot;,
+-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "DefaultHtmlFileTemplate": "HTML File",
++    "JavaScript Debug.table.html.executor": "Run",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
++    "RunOnceActivity.git.unshallow": "true",
++    "git-widget-placeholder": "#2 on Merging local",
++    "ignore.virus.scanning.warn.message": "true",
++    "junie.onboarding.icon.badge.shown": "true",
++    "node.js.detected.package.eslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "npm.build.executor": "Run",
++    "npm.build:cts.executor": "Run",
++    "npm.build:dedupe-types.executor": "Run",
++    "npm.build:std__path.executor": "Run",
++    "npm.lint.executor": "Run",
++    "npm.lint:fix.executor": "Run",
++    "npm.pretest.executor": "Run",
++    "npm.test (1).executor": "Run",
++    "npm.test.executor": "Run",
++    "npm.test:coverage.executor": "Run",
++    "npm.test:jsr.executor": "Run",
++    "settings.editor.selected.configurable": "vcs.Git",
++    "settings.editor.splitter.proportion": "0.5995551",
++    "to.speed.mode.migration.done": "true",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
+   <component name="RunManager" selected="npm.lint:fix">
+     <configuration name="build:dedupe-types" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+       <package-json value="$PROJECT_DIR$/node_modules/@eslint/config-array/package.json" />
+@@ -154,6 +172,10 @@
+       <workItem from="1753971288338" duration="34000" />
+       <workItem from="1753971369206" duration="3841000" />
+       <workItem from="1754325772286" duration="1861000" />
++      <workItem from="1754480968015" duration="8190000" />
++      <workItem from="1754570586175" duration="7225000" />
++      <workItem from="1754585770747" duration="3783000" />
++      <workItem from="1754649463621" duration="8071000" />
+     </task>
+     <task id="LOCAL-00001" summary="ukol 2">
+       <option name="closed" value="true" />
+Index: .idea/inspectionProfiles/Project_Default.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><component name=\"InspectionProjectProfileManager\">\r\n  <profile version=\"1.0\">\r\n    <option name=\"myName\" value=\"Project Default\" />\r\n    <inspection_tool class=\"Eslint\" enabled=\"true\" level=\"WARNING\" enabled_by_default=\"true\" />\r\n  </profile>\r\n</component>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/inspectionProfiles/Project_Default.xml b/.idea/inspectionProfiles/Project_Default.xml
+--- a/.idea/inspectionProfiles/Project_Default.xml	(revision 6c7703d6fa40b09d2d8a9d9e6998c8b4fd88d5e8)
++++ b/.idea/inspectionProfiles/Project_Default.xml	(date 1754502789593)
+@@ -2,5 +2,15 @@
+   <profile version="1.0">
+     <option name="myName" value="Project Default" />
+     <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
++    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
++      <option name="myValues">
++        <value>
++          <list size="1">
++            <item index="0" class="java.lang.String" itemvalue="backgroung:" />
++          </list>
++        </value>
++      </option>
++      <option name="myCustomValuesEnabled" value="true" />
++    </inspection_tool>
+   </profile>
+ </component>
+\ No newline at end of file
