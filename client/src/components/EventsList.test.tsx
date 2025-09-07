@@ -1,13 +1,26 @@
 import { render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import EventsList from "./EventsList";
+import type { components } from "../types";
+
+// Mock vygenerovaného API klienta
+vi.mock("../api", () => ({
+    EventsService: {
+        listEvents: vi.fn(),
+        getEventById: vi.fn(),
+        createEvent: vi.fn(),
+    },
+}));
+import { EventsService } from "../api";
+
+type Event = components["schemas"]["Event"];
 
 const apiPayload = {
     items: [
         {
             id: 1,
-            location: "Praha",
             title: "Super akce",
+            location: "Praha",
             dates: [
                 {
                     timestamp: 1726514405258,
@@ -20,8 +33,8 @@ const apiPayload = {
         },
         {
             id: 2,
-            location: "Brno",
             title: "Super akce 2",
+            location: "Brno",
             dates: [
                 {
                     timestamp: 1726514405258,
@@ -29,22 +42,18 @@ const apiPayload = {
                 },
             ],
         },
-    ],
+    ] as Event[],
 };
 
-describe("EventsList component (API)", () => {
+describe("EventsList component (API klient)", () => {
     beforeEach(() => {
-        vi.stubGlobal(
-            "fetch",
-            vi.fn(async () => ({
-                ok: true,
-                json: async () => apiPayload,
-            })) as unknown as typeof fetch
+        (EventsService.listEvents as unknown as jest.Mock).mockResolvedValue(
+            apiPayload
         );
     });
 
     afterEach(() => {
-        (fetch as unknown as { mockRestore?: () => void }).mockRestore?.();
+        vi.clearAllMocks();
     });
 
     it("načte a zobrazí tituly a lokace", async () => {
@@ -57,13 +66,13 @@ describe("EventsList component (API)", () => {
         const items = await screen.findAllByRole("listitem");
         expect(items).toHaveLength(2);
 
-        // první položka
-        expect(items[0]).toHaveTextContent(/super akce/i);
-        expect(items[0]).toHaveTextContent(/praha/i);
+        const r1 = within(items[0]);
+        expect(r1.getByText(/super akce/i)).toBeInTheDocument();
+        expect(r1.getByText(/praha/i)).toBeInTheDocument();
 
-        // druhá položka
-        expect(items[1]).toHaveTextContent(/super akce 2/i);
-        expect(items[1]).toHaveTextContent(/brno/i);
+        const r2 = within(items[1]);
+        expect(r2.getByText(/super akce 2/i)).toBeInTheDocument();
+        expect(r2.getByText(/brno/i)).toBeInTheDocument();
     });
 
     it("vykreslí odkazy na detail", async () => {
@@ -74,17 +83,15 @@ describe("EventsList component (API)", () => {
         );
 
         const items = await screen.findAllByRole("listitem");
-        expect(items).toHaveLength(2);
-
         const link1 = within(items[0]).getByRole("link");
         const link2 = within(items[1]).getByRole("link");
 
         expect(link1).toHaveAttribute("href", "/events/1");
-        expect(link1).toHaveTextContent(/super\s*akce/i);
+        expect(link1).toHaveTextContent(/super akce/i);
         expect(link1).toHaveTextContent(/praha/i);
 
         expect(link2).toHaveAttribute("href", "/events/2");
-        expect(link2).toHaveTextContent(/super\s*akce\s*2/i);
+        expect(link2).toHaveTextContent(/super akce 2/i);
         expect(link2).toHaveTextContent(/brno/i);
     });
 });

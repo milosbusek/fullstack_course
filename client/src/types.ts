@@ -1,20 +1,13 @@
-export type UserRecord = {
-    name: string;
-    answer: "yes" | "no" | "if-needed";
-};
+import type { components as OpenApiComponents } from "./types.d";
 
-export type DateRecord = {
-    timestamp: number;
-    records: UserRecord[];
-};
+export type Event = OpenApiComponents["schemas"]["Event"];
+export type DateRecord = OpenApiComponents["schemas"]["DateRecord"];
+export type Vote = OpenApiComponents["schemas"]["Vote"];
 
-export type PollingEvent = {
-    location?: string;
+export type EventsResponse = { items: Event[] };
+
+export type NewEventPayload = {
     title: string;
-    id: string;
-    dates: DateRecord[];
-};
-
-export type EventsListProps = {
-    data: PollingEvent[];
+    location?: string;
+    dates: number[];
 };

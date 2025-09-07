@@ -1,10 +1,11 @@
-// client/src/data/mockData.ts
-import { type PollingEvent } from "../types";
+import type { components } from "../types.d";
 
-export const data: PollingEvent[] = [
+type Event = components["schemas"]["Event"];
+
+export const data: Event[] = [
     {
-        title: "Tým building",
-        id: "1",
+        id: 1,
+        title: "Super akce",
         location: "Praha",
         dates: [
             {
@@ -14,8 +15,15 @@ export const data: PollingEvent[] = [
                     { name: "Jana", answer: "no" },
                 ],
             },
+        ],
+    },
+    {
+        id: 2,
+        title: "Super akce 2",
+        location: "Brno",
+        dates: [
             {
-                timestamp: 1726600861177,
+                timestamp: 1726514405258,
                 records: [{ name: "Jana", answer: "no" }],
             },
         ],

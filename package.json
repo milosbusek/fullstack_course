@@ -207,10 +207,13 @@
     "eslint": "^9.32.0",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.3.0",
+    "openapi-typescript-codegen": "^0.29.0",
+    "redoc-cli": "^0.13.21",
     "typescript-eslint": "^8.38.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:html": "redoc-cli bundle doc/openapi.yaml -o doc/index.html"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,104 @@
+openapi: 3.0.0
+info:
+  title: Events API
+  version: 1.0.0
+  description: API pro správu událostí (z minulého úkolu)
+
+servers:
+  - url: http://localhost:4000/api
+
+paths:
+  /events:
+    get:
+      summary: Získat seznam událostí
+      responses:
+        '200':
+          description: Seznam událostí
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Event'
+
+    post:
+      summary: Přidat novou událost
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventInput'
+      responses:
+        '201':
+          description: Událost vytvořena
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+
+  /events/{id}:
+    get:
+      summary: Získat detail události
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Detail události
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '404':
+          description: Událost nenalezena
+
+components:
+  schemas:
+    Event:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        location:
+          type: string
+        dates:
+          type: array
+          items:
+            $ref: '#/components/schemas/DateRecord'
+
+    EventInput:
+      type: object
+      properties:
+        title:
+          type: string
+        location:
+          type: string
+        dates:
+          type: array
+          items:
+            $ref: '#/components/schemas/DateRecord'
+
+    DateRecord:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/Vote'
+
+    Vote:
+      type: object
+      properties:
+        name:
+          type: string
+        answer:
+          type: string
+          enum: [yes, no, maybe]
