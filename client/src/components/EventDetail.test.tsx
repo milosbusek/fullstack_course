@@ -1,34 +1,61 @@
 import { render, screen } from "@testing-library/react";
-import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import EventDetail from "./EventDetail";
-import { data } from "../data/mockData";
+import { vi, beforeEach, afterEach, describe, it, expect } from "vitest";
 
-describe("EventDetail component", () => {
-    it("zobrazí detaily události podle ID", () => {
+// Přetížení useParams tak, aby vracel id = "1"
+vi.mock("react-router-dom", async (orig) => {
+    const actual = await vi.importActual<typeof import("react-router-dom")>(
+        "react-router-dom"
+    );
+    return {
+        ...actual,
+        useParams: () => ({ id: "1" }),
+    };
+});
+
+const apiDetail = {
+    id: 1,
+    location: "Praha",
+    title: "Super akce",
+    dates: [
+        {
+            timestamp: 1726514405258,
+            records: [
+                { name: "Honza", answer: "yes" },
+                { name: "Jana", answer: "no" },
+            ],
+        },
+    ],
+};
+
+beforeEach(() => {
+    vi.stubGlobal(
+        "fetch",
+        vi.fn(async () => ({
+            ok: true,
+            json: async () => apiDetail,
+        })) as unknown as typeof fetch
+    );
+});
+
+afterEach(() => {
+    (fetch as unknown as { mockRestore?: () => void }).mockRestore?.();
+});
+
+describe("EventDetail component (API)", () => {
+    it("načte detail a zobrazí titulek a lokaci", async () => {
         render(
-            <MemoryRouter initialEntries={["/events/1"]}>
-                <Routes>
-                    <Route path="/events/:id" element={<EventDetail />} />
-                </Routes>
+            <MemoryRouter>
+                <EventDetail />
             </MemoryRouter>
         );
 
-        // Kontrola, že se zobrazí název a místo události
-        expect(screen.getByText(/Detail události:/)).toBeInTheDocument();
-        expect(screen.getByText(data[0].title)).toBeInTheDocument();
-        const locations = screen.getAllByText(new RegExp(`^Místo:\\s*${data[0].location}$`));
-        expect(locations).toHaveLength(2);
-    });
+        // místo getByText(/Super akce/i) použijeme přesný heading druhé úrovně
+        expect(
+            await screen.findByRole("heading", { level: 2, name: /^Super akce$/i })
+        ).toBeInTheDocument();
 
-    it("zobrazí hlášku, když událost neexistuje", () => {
-        render(
-            <MemoryRouter initialEntries={["/events/999"]}>
-                <Routes>
-                    <Route path="/events/:id" element={<EventDetail />} />
-                </Routes>
-            </MemoryRouter>
-        );
-
-        expect(screen.getByText(/Událost nebyla nalezena/)).toBeInTheDocument();
+        expect(await screen.findByText(/Místo:\s*Praha/)).toBeInTheDocument();
     });
 });

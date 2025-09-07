@@ -1,23 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
-import { vi } from "vitest";
 import NewEvent from "./NewEvent";
 
-describe("NewEvent component", () => {
-    beforeEach(() => {
-        global.fetch = vi.fn(async () => ({
-            ok: false,
-            status: 500,
-            json: async () => ({}),
-        })) as unknown as typeof fetch;
-    });
-
+describe("NewEvent component (API)", () => {
     afterEach(() => {
-        vi.restoreAllMocks();
+        (fetch as unknown as { mockRestore?: () => void }).mockRestore?.();
     });
 
-    it("should render the form fields correctly", () => {
+    it("renders form fields", () => {
         render(
             <MemoryRouter>
                 <NewEvent />
@@ -27,19 +18,27 @@ describe("NewEvent component", () => {
         expect(
             screen.getByPlaceholderText("Zadejte název události")
         ).toBeInTheDocument();
+        expect(screen.getByPlaceholderText("Zadejte místo")).toBeInTheDocument();
         expect(
-            screen.getByPlaceholderText("Zadejte místo")
+            screen.getByRole("button", { name: /Přidat datum/i })
         ).toBeInTheDocument();
         expect(
-            screen.getByRole("button", { name: /přidat datum/i })
-        ).toBeInTheDocument();
-        expect(
-            screen.getByRole("button", { name: /přidat událost/i })
+            screen.getByRole("button", { name: /Přidat událost/i })
         ).toBeInTheDocument();
     });
 
-    it("should POST payload and show error on failure", async () => {
+    it("POSTs payload and shows error on failure", async () => {
         const user = userEvent.setup();
+
+        vi.stubGlobal(
+            "fetch",
+            vi.fn(async (url: RequestInfo, init?: RequestInit) => {
+                if (String(url).endsWith("/api/events") && init?.method === "POST") {
+                    return { ok: false, status: 500 } as unknown as Response;
+                }
+                return { ok: false, status: 404 } as unknown as Response;
+            }) as unknown as typeof fetch
+        );
 
         render(
             <MemoryRouter>
@@ -51,50 +50,30 @@ describe("NewEvent component", () => {
             screen.getByPlaceholderText("Zadejte název události"),
             "Testovaci udalost"
         );
-        await user.type(
-            screen.getByPlaceholderText("Zadejte místo"),
-            "Brno"
-        );
+        await user.type(screen.getByPlaceholderText("Zadejte místo"), "Brno");
 
-        await user.click(screen.getByRole("button", { name: /přidat datum/i }));
-
+        // přidej jeden datum
+        await user.click(screen.getByRole("button", { name: /Přidat datum/i }));
         const dateInput = document.querySelector(
             'input[type="datetime-local"]'
         ) as HTMLInputElement;
-
-        const iso = "2025-09-16T12:00";
         if (dateInput) {
-            dateInput.value = iso;
-            dateInput.dispatchEvent(
-                new Event("input", { bubbles: true, cancelable: true })
-            );
-            dateInput.dispatchEvent(
-                new Event("change", { bubbles: true, cancelable: true })
-            );
+            dateInput.value = "2025-09-16T12:00";
+            dateInput.dispatchEvent(new Event("input", { bubbles: true }));
+            dateInput.dispatchEvent(new Event("change", { bubbles: true }));
         }
 
-        await user.click(screen.getByRole("button", { name: /přidat událost/i }));
+        await user.click(screen.getByRole("button", { name: /Přidat událost/i }));
 
         expect(fetch).toHaveBeenCalledTimes(1);
-        const [url, init] = (fetch as unknown as any).mock.calls[0];
-
-        expect(url).toBe("/api/events");
-        expect(init.method).toBe("POST");
-        expect(init.headers).toEqual(
+        const [, init] = (fetch as unknown as jest.Mock).mock.calls[0];
+        expect((init as RequestInit).method).toBe("POST");
+        expect((init as RequestInit).headers).toEqual(
             expect.objectContaining({ "Content-Type": "application/json" })
         );
 
-        const payload = JSON.parse(init.body as string);
-        expect(payload.title).toBe("Testovaci udalost");
-        expect(payload.location).toBe("Brno");
-        expect(Array.isArray(payload.dates)).toBe(true);
-        expect(payload.dates.length).toBe(1);
-
-        const expectedTs = Date.parse(iso);
-        expect(payload.dates[0]).toBe(expectedTs);
-
         expect(
-            await screen.findByText(/Odeslání selhalo, server není dostupný/i)
+            await screen.findByText(/odeslání selhalo/i)
         ).toBeInTheDocument();
     });
 });

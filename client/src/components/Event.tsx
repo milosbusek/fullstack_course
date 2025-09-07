@@ -1,16 +1,27 @@
 import React from "react";
-import { type DateRecord, type EventProps, type UserRecord } from "../types";
+import { type DateRecord } from "../types";
 
-export const Event: React.FC<EventProps> = ({ location, title, dates }) => {
-    // Získání unikátních jmen účastníků z dat
-    const users: string[] = Array.from(
-        new Set(dates.flatMap((d: DateRecord) => d.records.map((r: UserRecord) => r.name)))
+type Props = {
+    title: string;
+    location?: string;
+    dates: DateRecord[];
+};
+
+const Event: React.FC<Props> = ({ title, location, dates }) => {
+    const users = Array.from(
+        new Set(dates.flatMap((d) => d.records.map((r) => r.name)))
     );
 
     return (
         <div className="event">
             <h2>{title}</h2>
-            {location && <p>Místo: {location}</p>}
+
+            {location && (
+                <p>
+                    Místo: <span>{location}</span>
+                </p>
+            )}
+
             {dates.length === 0 ? (
                 <p>Žádné termíny nejsou k dispozici.</p>
             ) : (
@@ -18,22 +29,22 @@ export const Event: React.FC<EventProps> = ({ location, title, dates }) => {
                     <thead>
                     <tr>
                         <th>Účastník</th>
-                        {dates.map((d: DateRecord) => (
-                            <th key={d.timestamp}>{new Date(d.timestamp).toLocaleDateString()}</th>
+                        {dates.map((d) => (
+                            <th key={d.timestamp}>
+                                {new Date(d.timestamp).toLocaleDateString("cs-CZ")}
+                            </th>
                         ))}
                     </tr>
                     </thead>
                     <tbody>
-                    {users.map((user: string) => (
+                    {users.map((user) => (
                         <tr key={user}>
                             <td>{user}</td>
-                            {dates.map((d: DateRecord) => {
-                                const record = d.records.find((r: UserRecord) => r.name === user);
-                                const answer = record?.answer;
-                                let symbol: string = "-";
-                                if (answer === "yes") symbol = "✅";
-                                else if (answer === "no") symbol = "❌";
-                                else if (answer === "if-needed") symbol = "❔";
+                            {dates.map((d) => {
+                                const rec = d.records.find((r) => r.name === user);
+                                let symbol = "-";
+                                if (rec?.answer === "yes") symbol = "\u2705"; // ✅
+                                else if (rec?.answer === "no") symbol = "\u274C"; // ❌
                                 return <td key={d.timestamp}>{symbol}</td>;
                             })}
                         </tr>
