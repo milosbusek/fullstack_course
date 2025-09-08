@@ -1,26 +1,14 @@
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import EventsList from "./EventsList";
-import type { components } from "../types";
-
-// Mock vygenerovaného API klienta
-vi.mock("../api", () => ({
-    EventsService: {
-        listEvents: vi.fn(),
-        getEventById: vi.fn(),
-        createEvent: vi.fn(),
-    },
-}));
-import { EventsService } from "../api";
-
-type Event = components["schemas"]["Event"];
 
 const apiPayload = {
     items: [
         {
             id: 1,
-            title: "Super akce",
             location: "Praha",
+            title: "Super akce",
             dates: [
                 {
                     timestamp: 1726514405258,
@@ -33,8 +21,8 @@ const apiPayload = {
         },
         {
             id: 2,
-            title: "Super akce 2",
             location: "Brno",
+            title: "Super akce 2",
             dates: [
                 {
                     timestamp: 1726514405258,
@@ -42,18 +30,22 @@ const apiPayload = {
                 },
             ],
         },
-    ] as Event[],
+    ],
 };
 
-describe("EventsList component (API klient)", () => {
+describe("EventsList component (API)", () => {
     beforeEach(() => {
-        (EventsService.listEvents as unknown as jest.Mock).mockResolvedValue(
-            apiPayload
+        vi.stubGlobal(
+            "fetch",
+            vi.fn(async () => ({
+                ok: true,
+                json: async () => apiPayload,
+            })) as unknown as typeof fetch
         );
     });
 
     afterEach(() => {
-        vi.clearAllMocks();
+        (fetch as unknown as { mockRestore?: () => void }).mockRestore?.();
     });
 
     it("načte a zobrazí tituly a lokace", async () => {
@@ -66,13 +58,11 @@ describe("EventsList component (API klient)", () => {
         const items = await screen.findAllByRole("listitem");
         expect(items).toHaveLength(2);
 
-        const r1 = within(items[0]);
-        expect(r1.getByText(/super akce/i)).toBeInTheDocument();
-        expect(r1.getByText(/praha/i)).toBeInTheDocument();
+        expect(items[0]).toHaveTextContent(/super akce/i);
+        expect(items[0]).toHaveTextContent(/praha/i);
 
-        const r2 = within(items[1]);
-        expect(r2.getByText(/super akce 2/i)).toBeInTheDocument();
-        expect(r2.getByText(/brno/i)).toBeInTheDocument();
+        expect(items[1]).toHaveTextContent(/super akce 2/i);
+        expect(items[1]).toHaveTextContent(/brno/i);
     });
 
     it("vykreslí odkazy na detail", async () => {

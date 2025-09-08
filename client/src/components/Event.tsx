@@ -1,18 +1,14 @@
-import { DateRecord } from "../types";
+import { Link } from "react-router-dom";
+import type { Event } from "../eventTypes";
 
-type EventProps = {
-    id: number;
-    title: string;
-    location?: string;
-    dates: DateRecord[];
-};
+type Props = { event: Event };
 
-export default function Event({ id, title, location, dates }: EventProps) {
+export default function EventItem({ event }: Props) {
     return (
         <li>
-            <a href={`/events/${id}`}>
-                {title} {location && <span>({location})</span>}
-            </a>
+            <Link to={`/events/${event.id}`}>
+                {event.title} – {event.location}
+            </Link>
         </li>
     );
 }

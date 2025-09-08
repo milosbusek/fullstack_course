@@ -1,21 +1,19 @@
-import type { components } from "../types.d";
+import type { Event } from "./eventTypes";
 
-type Event = components["schemas"]["Event"];
-
-export const data: Event[] = [
+export const mockEvents: Event[] = [
     {
         id: 1,
         title: "Super akce",
         location: "Praha",
         dates: [
             {
-                timestamp: 1726514405258,
+                timestamp: Date.now(),
                 records: [
                     { name: "Honza", answer: "yes" },
-                    { name: "Jana", answer: "no" },
-                ],
-            },
-        ],
+                    { name: "Jana", answer: "no" }
+                ]
+            }
+        ]
     },
     {
         id: 2,
@@ -23,9 +21,9 @@ export const data: Event[] = [
         location: "Brno",
         dates: [
             {
-                timestamp: 1726514405258,
-                records: [{ name: "Jana", answer: "no" }],
-            },
-        ],
-    },
+                timestamp: Date.now(),
+                records: [{ name: "Jana", answer: "no" }]
+            }
+        ]
+    }
 ];

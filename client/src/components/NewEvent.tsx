@@ -1,42 +1,48 @@
-import { useState } from "react";
-import { NewEventPayload } from "../types";
+import { useState, FormEvent } from "react";
+import type { NewEventPayload } from "../EventTypes";
 
-export default function NewEvent() {
+const NewEvent = () => {
     const [title, setTitle] = useState("");
     const [location, setLocation] = useState("");
-    const [dates, setDates] = useState<number[]>([]);
 
-    async function handleSubmit(e: React.FormEvent) {
+    const onSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
         const payload: NewEventPayload = {
             title,
-            location,
-            dates,
+            location: location || undefined,
+            // v tomto formuláři žádné datumy nevybíráme – pošleme prázdné pole
+            dates: [],
         };
 
-        await fetch("/api/events", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-        });
-    }
+        try {
+            await fetch("/api/events", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            });
+                        setTitle("");
+            setLocation("");
+        } catch {
+            // tady by šla zobrazit chyba
+        }
+    };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
             <input
-                type="text"
-                placeholder="Název akce"
+                placeholder="název akce"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
             <input
-                type="text"
-                placeholder="Místo"
+                placeholder="místo"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
             />
             <button type="submit">Přidat událost</button>
         </form>
     );
-}
+};
+
+export default NewEvent;

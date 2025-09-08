@@ -1,19 +1,34 @@
-import { EventsResponse } from "../types";
+import { useEffect, useState } from "react";
+import EventItem from "./Event";
+import type { Event } from "../eventTypes";
 
-type EventsListProps = {
-    events: EventsResponse;
-};
+export type EventsListProps = { events?: Event[] };
 
-export default function EventsList({ events }: EventsListProps) {
+export default function EventsList({ events: input }: EventsListProps) {
+    const [events, setEvents] = useState<Event[]>(input ?? []);
+
+    useEffect(() => {
+        if (input && input.length) return;
+
+        (async () => {
+            try {
+                const res = await fetch("/api/events");
+                const json = await res.json(); // { items: Event[] }
+                setEvents(json.items ?? []);
+            } catch {
+                setEvents([]);
+            }
+        })();
+    }, [input]);
+
     return (
-        <ul>
-            {events.items.map((e) => (
-                <li key={e.id}>
-                    <a href={`/events/${e.id}`}>
-                        {e.title} {e.location && <span>({e.location})</span>}
-                    </a>
-                </li>
-            ))}
-        </ul>
+        <>
+            <h1>Seznam událostí</h1>
+            <ul>
+                {(events ?? []).map((e) => (
+                    <EventItem key={e.id!} event={e} />
+                ))}
+            </ul>
+        </>
     );
 }

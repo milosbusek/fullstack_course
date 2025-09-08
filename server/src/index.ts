@@ -2,29 +2,14 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 
 const app = express();
-const PORT = 4000;
-
 app.use(cors());
 app.use(express.json());
 
-interface Record {
-    name: string;
-    answer: string;
-}
+type UserRecord = { name: string; answer: "yes" | "no" | "if-needed" };
+type DateRecord = { timestamp: number; records: UserRecord[] };
+type Event = { id: number; title: string; location?: string; dates: DateRecord[] };
 
-interface DateOption {
-    timestamp: number;
-    records: Record[];
-}
-
-interface Event {
-    id: number;
-    location: string;
-    title: string;
-    dates: DateOption[];
-}
-
-const events: Event[] = [
+let events: Event[] = [
     {
         id: 1,
         location: "Praha",
@@ -64,42 +49,36 @@ const events: Event[] = [
     }
 ];
 
-
-app.get("/api/events", (req: Request, res: Response) => {
+app.get("/api/events", (_req: Request, res: Response) => {
     res.json({ items: events });
 });
 
 app.get("/api/events/:id", (req: Request, res: Response) => {
-    const eventId = parseInt(req.params.id);
-    const event = events.find((e) => e.id === eventId);
-    if (!event) {
-        return res.status(404).json({ error: "Událost nenalezena" });
-    }
-    res.json(event);
+    const id = Number(req.params.id);
+    const found = events.find(e => e.id === id);
+    if (!found) return res.status(404).json({ message: "Not found" });
+    res.json(found);
 });
 
-
 app.post("/api/events", (req: Request, res: Response) => {
-    const { title, location, dates } = req.body;
+    const body = req.body as { title?: string; location?: string; dates?: number[] };
 
-    if (!title || !Array.isArray(dates)) {
-        return res.status(400).json({ error: "Neplatná data" });
+    if (!body || typeof body.title !== "string" || !Array.isArray(body.dates) || body.dates.length < 1) {
+        return res.status(400).json({ message: "Invalid payload" });
     }
 
     const newEvent: Event = {
-        id: events.length + 1,
-        location: location || "",
-        title,
-        dates: dates.map((timestamp: number) => ({
-            timestamp,
-            records: []
-        }))
+        id: Math.max(0, ...events.map(e => e.id)) + 1,
+        title: body.title,
+        location: body.location,
+        dates: body.dates.map(ts => ({ timestamp: ts, records: [] }))
     };
 
     events.push(newEvent);
     res.status(201).json(newEvent);
 });
 
+const PORT = 4000;
 app.listen(PORT, () => {
     console.log(`Server běží na http://localhost:${PORT}`);
 });

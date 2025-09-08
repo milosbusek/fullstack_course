@@ -1,16 +1,26 @@
+import { vi } from "vitest";
+
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import Event from "./Event";
-import { DateRecord } from "../types";
+import type { components } from "../EventTypes";
 
-test("Event zobrazí odkaz s titulkem a lokací", () => {
-    const dates: DateRecord[] = [{ timestamp: Date.now(), records: [] }];
-    render(
-        <ul>
-            <Event id={1} title="Super akce" location="Praha" dates={dates} />
-        </ul>
-    );
+describe("Event component", () => {
+    it("vykreslí název a lokaci události", () => {
+        const mockEvent: components["schemas"]["Event"] = {
+            id: 1,
+            title: "Testovací akce",
+            location: "Praha",
+            dates: [],
+        };
 
-    const link = screen.getByRole("link", { name: /super akce/i });
-    expect(link).toHaveAttribute("href", "/events/1");
-    expect(link).toHaveTextContent(/praha/i);
+        render(
+            <MemoryRouter>
+                <Event event={mockEvent} />
+            </MemoryRouter>
+        );
+
+        expect(screen.getByText(/Testovací akce/)).toBeInTheDocument();
+        expect(screen.getByText(/Praha/)).toBeInTheDocument();
+    });
 });

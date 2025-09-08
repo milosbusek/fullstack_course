@@ -1,29 +1,48 @@
-import { Event } from "../types";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import type { Event } from "../eventTypes";
 
-type EventDetailProps = {
-    event: Event;
-};
+export default function EventDetail() {
+    const { id } = useParams();
+    const [event, setEvent] = useState<Event | null>(null);
 
-export default function EventDetail({ event }: EventDetailProps) {
+    useEffect(() => {
+        let ignore = false;
+        (async () => {
+            const res = await fetch(`/api/events/${id}`);
+            if (!res.ok) return;
+            const json: Event = await res.json();
+            if (!ignore) setEvent(json);
+        })();
+        return () => {
+            ignore = true;
+        };
+    }, [id]);
+
+    if (!event) return <div>Načítám...</div>;
+
     return (
         <div>
+            <h1>Detail události</h1>
             <h2>{event.title}</h2>
             <p>Místo: {event.location}</p>
-            <h3>Termíny</h3>
-            <ul>
-                {event.dates?.map((d, i) => (
-                    <li key={i}>
-                        {new Date(d.timestamp!).toLocaleDateString("cs-CZ")}
-                        <ul>
-                            {d.records?.map((r, j) => (
-                                <li key={j}>
-                                    {r.name}: {r.answer}
-                                </li>
-                            ))}
-                        </ul>
-                    </li>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Jméno</th>
+                    <th>Odpověď</th>
+                </tr>
+                </thead>
+                <tbody>
+                {(event.dates?.[0]?.records ?? []).map((r, i) => (
+                    <tr key={i}>
+                        <td>{r.name}</td>
+                        <td>{r.answer}</td>
+                    </tr>
                 ))}
-            </ul>
+                </tbody>
+            </table>
         </div>
     );
 }
