@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31fdd813-be95-48fb-ab11-b8e6bb3db5e0" name="Changes" comment="git status">
-      <change afterPath="$PROJECT_DIR$/server/src/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/EventDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/EventDetail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/EventsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/EventsList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/NewEvent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/NewEvent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/db.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/repo.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/routes/events.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -42,7 +42,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -54,7 +54,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JavaScript Debug.localhost:5173.executor": "Debug",
+    "JavaScript Debug.localhost:5175.executor": "Debug",
     "JavaScript Debug.table.html.executor": "Run",
+    "OpenAPI/Swagger Code Generator.openapi.yaml.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -65,10 +68,10 @@
     "Vitest.NewEvent component.executor": "Run",
     "Vitest.NewEvent component.should add a new event on form submit.executor": "Run",
     "Vitest.zobrazí položky a odkazy.executor": "Run",
-    "git-widget-placeholder": "feat/server-api",
+    "git-widget-placeholder": "feat/sqlite-persistence",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/milos/WebstormProjects/fullstack_course/client/src/components",
+    "last_opened_file_path": "C:/Users/milos/WebstormProjects/fullstack_course/server/src",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -86,7 +89,7 @@
     "npm.test.executor": "Run",
     "npm.test:coverage.executor": "Run",
     "npm.test:jsr.executor": "Run",
-    "settings.editor.selected.configurable": "ml.llm.LLMConfigurable",
+    "settings.editor.selected.configurable": "settings.qodana",
     "settings.editor.splitter.proportion": "0.5995551",
     "to.speed.mode.migration.done": "true",
     "ts.external.directory.path": "C:\\Users\\milos\\WebstormProjects\\fullstack_course\\node_modules\\typescript\\lib",
@@ -95,22 +98,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\milos\WebstormProjects\fullstack_course\client\src\components" />
-      <recent name="C:\Users\milos\WebstormProjects\fullstack_course\server" />
       <recent name="C:\Users\milos\WebstormProjects\fullstack_course\server\src" />
-      <recent name="C:\Users\milos\WebstormProjects\fullstack_course\client\src\hooks" />
-      <recent name="C:\Users\milos\WebstormProjects\fullstack_course\client\src\utils" />
+      <recent name="C:\Users\milos\WebstormProjects\fullstack_course\server\src\routes" />
+      <recent name="C:\Users\milos\WebstormProjects\fullstack_course\client\src\components" />
+      <recent name="C:\Users\milos\WebstormProjects\fullstack_course\client\src" />
+      <recent name="C:\Users\milos\WebstormProjects\fullstack_course\client\src\data" />
     </key>
   </component>
-  <component name="RunManager" selected="Vitest.NewEvent component.should add a new event on form submit">
-    <configuration name="All Tests" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <vitest-package value="$PROJECT_DIR$/client/node_modules/vitest" />
-      <working-dir value="$PROJECT_DIR$/client" />
-      <envs />
-      <scope-kind value="ALL" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="JavaScript Debug.localhost:5175">
     <configuration name="NewEvent component" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <vitest-package value="$PROJECT_DIR$/client/node_modules/vitest" />
@@ -138,36 +133,36 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="zobrazí položky a odkazy" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <vitest-package value="$PROJECT_DIR$/client/node_modules/vitest" />
-      <working-dir value="$PROJECT_DIR$/client" />
-      <vitest-options value="--run" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/client/src/components/EventsList.test.tsx" />
-      <test-names>
-        <test-name value="zobrazí položky a odkazy" />
-      </test-names>
+    <configuration name="localhost:5173" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:5173/">
       <method v="2" />
     </configuration>
-    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/client/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="dev" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
+    <configuration name="localhost:5175" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:5175">
+      <method v="2" />
+    </configuration>
+    <configuration name="openapi.yaml" type="SwaggerCodegen" editBeforeRun="true" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="customTemplatesPath" value="" />
+      <option name="generateToPath" value="C:\Users\milos\gen" />
+      <option name="generationParameters">
+        <list />
+      </option>
+      <option name="generatorType" value="OPENAPI_GENERATOR_V7" />
+      <option name="jdkPath" value="C:\Program Files\JetBrains\WebStorm 2025.1.3\jbr\bin\java.exe" />
+      <option name="language" value="typescript-node" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="specificationPath" value="C:\Users\milos\WebstormProjects\fullstack_course\doc\openapi.yaml" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.localhost:5175" />
+        <item itemvalue="OpenAPI/Swagger Code Generator.openapi.yaml" />
+        <item itemvalue="JavaScript Debug.localhost:5173" />
         <item itemvalue="Vitest.NewEvent component.should add a new event on form submit" />
         <item itemvalue="Vitest.NewEvent component" />
-        <item itemvalue="Vitest.All Tests" />
-        <item itemvalue="Vitest.zobrazí položky a odkazy" />
-        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
@@ -201,7 +196,14 @@
       <workItem from="1756642455277" duration="17776000" />
       <workItem from="1756660749631" duration="2969000" />
       <workItem from="1756732926943" duration="11802000" />
-      <workItem from="1756829480543" duration="11054000" />
+      <workItem from="1756829480543" duration="11921000" />
+      <workItem from="1757239209540" duration="11939000" />
+      <workItem from="1757254114717" duration="12905000" />
+      <workItem from="1757332152877" duration="7281000" />
+      <workItem from="1757343075867" duration="8439000" />
+      <workItem from="1757354597402" duration="64000" />
+      <workItem from="1757354822971" duration="10320000" />
+      <workItem from="1757767725744" duration="8965000" />
     </task>
     <task id="LOCAL-00001" summary="ukol 2">
       <option name="closed" value="true" />

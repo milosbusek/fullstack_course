@@ -1,0 +1,12 @@
+/* generated using openapi-typescript-codegen -- do not edit */
+/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+import type { DateRecord } from './DateRecord';
+export type Event = {
+    id?: number;
+    title?: string;
+    location?: string;
+    dates?: Array<DateRecord>;
+};
+

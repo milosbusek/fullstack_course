@@ -1,23 +1,29 @@
-// client/src/data/mockData.ts
-import { type PollingEvent } from "../types";
+import type { Event } from "./eventTypes";
 
-export const data: PollingEvent[] = [
+export const mockEvents: Event[] = [
     {
-        title: "Tým building",
-        id: "1",
+        id: 1,
+        title: "Super akce",
         location: "Praha",
         dates: [
             {
-                timestamp: 1726514405258,
+                timestamp: Date.now(),
                 records: [
                     { name: "Honza", answer: "yes" },
-                    { name: "Jana", answer: "no" },
-                ],
-            },
-            {
-                timestamp: 1726600861177,
-                records: [{ name: "Jana", answer: "no" }],
-            },
-        ],
+                    { name: "Jana", answer: "no" }
+                ]
+            }
+        ]
     },
+    {
+        id: 2,
+        title: "Super akce 2",
+        location: "Brno",
+        dates: [
+            {
+                timestamp: Date.now(),
+                records: [{ name: "Jana", answer: "no" }]
+            }
+        ]
+    }
 ];

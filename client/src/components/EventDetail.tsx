@@ -1,60 +1,48 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Event from "./Event";
-import { useWeather } from "../hooks/useWeather";
+import type { Event } from "../eventTypes";
 
-type DateRecord = { timestamp: number; records: { name: string; answer: "yes" | "no" | "if-needed" }[] };
-type PollingEvent = { id: number; title: string; location?: string; dates: DateRecord[] };
-
-const API = "http://localhost:4000";
-
-const EventDetail: React.FC = () => {
-    const { id } = useParams<{ id: string }>();
-    const [event, setEvent] = useState<PollingEvent | null>(null);
-    const [status, setStatus] = useState<"idle" | "loading" | "error" | "success">("idle");
-    const { state: weather, getWeather } = useWeather();
+export default function EventDetail() {
+    const { id } = useParams();
+    const [event, setEvent] = useState<Event | null>(null);
 
     useEffect(() => {
-        if (!id) return;
-        let cancelled = false;
-        setStatus("loading");
-        fetch(`${API}/api/events/${id}`)
-            .then(async (r) => {
-                if (!r.ok) throw new Error(String(r.status));
-                const json: PollingEvent = await r.json();
-                if (!cancelled) {
-                    setEvent(json);
-                    setStatus("success");
-                }
-            })
-            .catch(() => !cancelled && setStatus("error"));
+        let ignore = false;
+        (async () => {
+            const res = await fetch(`/api/events/${id}`);
+            if (!res.ok) return;
+            const json: Event = await res.json();
+            if (!ignore) setEvent(json);
+        })();
         return () => {
-            cancelled = true;
+            ignore = true;
         };
     }, [id]);
 
-    useEffect(() => {
-        if (!event) return;
-        if (event.location) getWeather(event.location);
-    }, [event?.id]);
-
-    if (status === "loading") return <p>Načítám…</p>;
-    if (status === "error") return <p>Událost nebyla nalezena.</p>;
-    if (!event) return null;
+    if (!event) return <div>Načítám...</div>;
 
     return (
         <div>
-            <h1>Detail události: {event.title}</h1>
-            {event.location ? <p>Místo: {event.location}</p> : null}
-            {weather.status === "success" ? (
-                <div style={{ margin: "8px 0 16px" }}>
-                    <strong>Počasí dnes: </strong>
-                    <span>{weather.tempNowC} °C (open-meteo.com)</span>
-                </div>
-            ) : null}
-            <Event location={event.location} title={event.title} dates={event.dates} />
+            <h1>Detail události</h1>
+            <h2>{event.title}</h2>
+            <p>Místo: {event.location}</p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Jméno</th>
+                    <th>Odpověď</th>
+                </tr>
+                </thead>
+                <tbody>
+                {(event.dates?.[0]?.records ?? []).map((r, i) => (
+                    <tr key={i}>
+                        <td>{r.name}</td>
+                        <td>{r.answer}</td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
         </div>
     );
-};
-
-export default EventDetail;
+}

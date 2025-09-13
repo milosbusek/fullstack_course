@@ -1,47 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { type PollingEvent } from "../types";
+import { useEffect, useState } from "react";
+import EventItem from "./Event";
+import type { Event } from "../eventTypes";
 
-const EventsList: React.FC = () => {
-    const [events, setEvents] = useState<PollingEvent[]>([]);
-    const [error, setError] = useState<string>("");
+export type EventsListProps = { events?: Event[] };
+
+export default function EventsList({ events: input }: EventsListProps) {
+    const [events, setEvents] = useState<Event[]>(input ?? []);
 
     useEffect(() => {
-        const fetchEvents = async () => {
+        if (input && input.length) return;
+
+        (async () => {
             try {
-                const response = await fetch("http://localhost:4000/api/events");
-                if (!response.ok) {
-                    throw new Error("Nepodařilo se načíst události");
-                }
-                const data = await response.json();
-                setEvents(data.items);
-            } catch (err) {
-                setError((err as Error).message);
+                const res = await fetch("/api/events");
+                const json = await res.json(); // { items: Event[] }
+                setEvents(json.items ?? []);
+            } catch {
+                setEvents([]);
             }
-        };
-
-        fetchEvents();
-    }, []);
-
-    if (error) {
-        return <p style={{ color: "red" }}>Chyba: {error}</p>;
-    }
+        })();
+    }, [input]);
 
     return (
-        <div>
+        <>
             <h1>Seznam událostí</h1>
             <ul>
-                {events.map((event) => (
-                    <li key={event.id}>
-                        <Link to={`/events/${event.id}`}>
-                            {event.title} – {event.location}
-                        </Link>
-                    </li>
+                {(events ?? []).map((e) => (
+                    <EventItem key={e.id!} event={e} />
                 ))}
             </ul>
-        </div>
+        </>
     );
-};
-
-export default EventsList;
-
+}

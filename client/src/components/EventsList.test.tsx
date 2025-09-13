@@ -1,3 +1,4 @@
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import EventsList from "./EventsList";
@@ -57,11 +58,9 @@ describe("EventsList component (API)", () => {
         const items = await screen.findAllByRole("listitem");
         expect(items).toHaveLength(2);
 
-        // první položka
         expect(items[0]).toHaveTextContent(/super akce/i);
         expect(items[0]).toHaveTextContent(/praha/i);
 
-        // druhá položka
         expect(items[1]).toHaveTextContent(/super akce 2/i);
         expect(items[1]).toHaveTextContent(/brno/i);
     });
@@ -74,17 +73,15 @@ describe("EventsList component (API)", () => {
         );
 
         const items = await screen.findAllByRole("listitem");
-        expect(items).toHaveLength(2);
-
         const link1 = within(items[0]).getByRole("link");
         const link2 = within(items[1]).getByRole("link");
 
         expect(link1).toHaveAttribute("href", "/events/1");
-        expect(link1).toHaveTextContent(/super\s*akce/i);
+        expect(link1).toHaveTextContent(/super akce/i);
         expect(link1).toHaveTextContent(/praha/i);
 
         expect(link2).toHaveAttribute("href", "/events/2");
-        expect(link2).toHaveTextContent(/super\s*akce\s*2/i);
+        expect(link2).toHaveTextContent(/super akce 2/i);
         expect(link2).toHaveTextContent(/brno/i);
     });
 });
