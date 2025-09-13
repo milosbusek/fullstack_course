@@ -5,27 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31fdd813-be95-48fb-ab11-b8e6bb3db5e0" name="Changes" comment="git status">
-      <change afterPath="$PROJECT_DIR$/client/src/EventTypes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/db.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/repo.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/routes/events.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/eslint.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/eslint.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Event.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Event.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Event.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Event.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/EventDetail.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/EventDetail.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/EventDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/EventDetail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/EventsList.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/EventsList.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/EventsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/EventsList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/NewEvent.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/NewEvent.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/NewEvent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/NewEvent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/data/mockData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/data/mockData.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/types.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/tsconfig.app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/tsconfig.node.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/tsconfig.node.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eslint.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/eslint.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/eslint.config.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -82,10 +68,10 @@
     "Vitest.NewEvent component.executor": "Run",
     "Vitest.NewEvent component.should add a new event on form submit.executor": "Run",
     "Vitest.zobrazí položky a odkazy.executor": "Run",
-    "git-widget-placeholder": "feat/openapi-client",
+    "git-widget-placeholder": "feat/sqlite-persistence",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/milos/WebstormProjects/fullstack_course/client/src/components",
+    "last_opened_file_path": "C:/Users/milos/WebstormProjects/fullstack_course/server/src",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -112,11 +98,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\milos\WebstormProjects\fullstack_course\server\src" />
+      <recent name="C:\Users\milos\WebstormProjects\fullstack_course\server\src\routes" />
       <recent name="C:\Users\milos\WebstormProjects\fullstack_course\client\src\components" />
       <recent name="C:\Users\milos\WebstormProjects\fullstack_course\client\src" />
       <recent name="C:\Users\milos\WebstormProjects\fullstack_course\client\src\data" />
-      <recent name="C:\Users\milos\WebstormProjects\fullstack_course\client" />
-      <recent name="C:\Users\milos\WebstormProjects\fullstack_course" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.localhost:5175">
@@ -216,7 +202,8 @@
       <workItem from="1757332152877" duration="7281000" />
       <workItem from="1757343075867" duration="8439000" />
       <workItem from="1757354597402" duration="64000" />
-      <workItem from="1757354822971" duration="9549000" />
+      <workItem from="1757354822971" duration="10320000" />
+      <workItem from="1757767725744" duration="8965000" />
     </task>
     <task id="LOCAL-00001" summary="ukol 2">
       <option name="closed" value="true" />
